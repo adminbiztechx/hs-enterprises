@@ -15,7 +15,7 @@ export const BizTechLogo = ({ className = "h-8", light = false }) => (
     <div className="flex flex-col text-left">
       <div className="flex items-baseline">
         <span className={`font-extrabold text-[13px] xs:text-[15px] sm:text-[18px] tracking-tight leading-none ${light ? 'text-white' : 'text-[#0B1528]'}`}>
-          BizTech Solutions
+          H S ENTERPRISES
         </span>
         <span className="text-[8px] sm:text-[10px] font-bold text-slate-400 ml-0.5">®</span>
       </div>

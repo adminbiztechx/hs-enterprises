@@ -11,7 +11,7 @@ export default function TestimonialsAndKnowledge({ onNavigateResources }) {
       rating: 5,
     },
     {
-      quote: "BizTech Solutions transformed our multi-branch inventory tracking. Their custom Tally integration with WhatsApp cut our payment cycle by 12 days.",
+      quote: "H S ENTERPRISES transformed our multi-branch inventory tracking. Their custom Tally integration with WhatsApp cut our payment cycle by 12 days.",
       name: "Suresh Agarwal",
       role: "Managing Director, Agarwal Retail Mart",
       avatar: "/images/team-amit.jpg",

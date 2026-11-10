@@ -56,7 +56,7 @@ export default function WhyChooseUsAndProcess() {
               <div className="w-44 sm:w-48 h-40 sm:h-44 rounded-2xl overflow-hidden shadow-sm border border-slate-200/80 shrink-0 bg-slate-100">
                 <img
                   src="/images/team-exact.jpg"
-                  alt="BizTech Implementation Team"
+                  alt="H S ENTERPRISES Implementation Team"
                   className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
                   onError={(e) => {
                     e.currentTarget.onerror = null;
@@ -86,7 +86,7 @@ export default function WhyChooseUsAndProcess() {
                 <div className="w-24 h-28 rounded-xl overflow-hidden shadow-xs border border-slate-200/80 shrink-0 bg-slate-100">
                   <img
                     src="/images/team-exact.jpg"
-                    alt="BizTech Implementation Team"
+                    alt="H S ENTERPRISES Implementation Team"
                     className="w-full h-full object-cover object-top"
                     onError={(e) => {
                       e.currentTarget.onerror = null;

@@ -175,7 +175,7 @@ export default function LeadModal({ isOpen, onClose, type = 'consultation' }) {
               </button>
 
               <p className="text-[10px] text-center text-slate-400 mt-2">
-                🔒 Your information is completely secure with BizTech Solutions. We never spam.
+                🔒 Your information is completely secure with H S ENTERPRISES. We never spam.
               </p>
             </form>
           )}

@@ -163,9 +163,9 @@ export default function Footer({ onNavigateHome, onNavigateProducts, onNavigateS
               <Phone className="w-3.5 h-3.5 text-sky-400" />
               <span>+91 98765 43210</span>
             </a>
-            <a href="mailto:enquiry@biztechsolutions.in" className="flex items-center gap-1.5 hover:text-white transition-colors">
+            <a href="mailto:enquiry@hsenterprises.in" className="flex items-center gap-1.5 hover:text-white transition-colors">
               <Mail className="w-3.5 h-3.5 text-sky-400" />
-              <span>enquiry@biztechsolutions.in</span>
+              <span>enquiry@hsenterprises.in</span>
             </a>
           </div>
 
@@ -208,7 +208,7 @@ export default function Footer({ onNavigateHome, onNavigateProducts, onNavigateS
               <span>|</span>
               <a href="#" className="hover:text-white">Terms of Use</a>
               <span>|</span>
-              <span>© 2025 BizTech Solutions. All Rights Reserved.</span>
+              <span>© 2025 H S ENTERPRISES. All Rights Reserved.</span>
             </div>
           </div>
 

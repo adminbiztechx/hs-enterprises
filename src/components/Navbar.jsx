@@ -97,7 +97,7 @@ export default function Navbar({
       dropdown: [
         { name: 'Our Story & Vision', desc: 'Leading Tally 3-Star Certified Partner' },
         { name: 'Leadership & Team', desc: 'Experienced professionals and consultants' },
-        { name: 'Why Choose BizTech', desc: '10+ years of enterprise excellence' },
+        { name: 'Why Choose H S Enterprises', desc: '10+ years of enterprise excellence' },
         { name: 'Contact & Support', desc: 'Reach our pan-India support desk' }
       ]
     }
@@ -115,12 +115,12 @@ export default function Navbar({
       <div className="w-full max-w-[1720px] mx-auto px-2.5 xs:px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="flex items-center justify-between h-16 sm:h-[68px]">
           
-          {/* Left Brand: BizTech Solutions + Authorized Tally Partner */}
+          {/* Left Brand: H S ENTERPRISES + Authorized Tally Partner */}
           <div className="flex items-center gap-1 xs:gap-2 sm:gap-3 md:gap-4 shrink-0 min-w-0">
             <button 
               onClick={onNavigateHome}
               className="flex items-center group text-left focus:outline-none cursor-pointer shrink-0"
-              aria-label="BizTech Solutions Home"
+              aria-label="H S ENTERPRISES Home"
             >
               <BizTechLogo />
             </button>
@@ -195,7 +195,7 @@ export default function Navbar({
 
             {/* WhatsApp Icon Button */}
             <a
-              href="https://wa.me/919876543210?text=Hi%2C%20I%20am%20interested%20in%20TallyPrime%20and%20BizTech%20Solutions."
+              href="https://wa.me/919876543210?text=Hi%2C%20I%20am%20interested%20in%20TallyPrime%20and%20H%20S%20ENTERPRISES."
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Contact on WhatsApp"
@@ -218,7 +218,7 @@ export default function Navbar({
             {/* Quick Call Icon Button on mobile */}
             <a
               href="tel:+919876543210"
-              aria-label="Call BizTech"
+              aria-label="Call H S ENTERPRISES"
               className="w-7 h-7 xs:w-8 xs:h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-[#0B1528] flex items-center justify-center transition-colors"
             >
               <Phone className="w-3.5 h-3.5 fill-current" />
@@ -226,7 +226,7 @@ export default function Navbar({
 
             {/* WhatsApp Icon Button on mobile */}
             <a
-              href="https://wa.me/919876543210?text=Hi%2C%20I%20am%20interested%20in%20TallyPrime%20and%20BizTech%20Solutions."
+              href="https://wa.me/919876543210?text=Hi%2C%20I%20am%20interested%20in%20TallyPrime%20and%20H%20S%20ENTERPRISES."
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
