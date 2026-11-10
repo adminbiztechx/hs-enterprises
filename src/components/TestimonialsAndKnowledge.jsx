@@ -75,26 +75,26 @@ export default function TestimonialsAndKnowledge({ onNavigateResources }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           
           {/* Left Column: What Our Customers Say */}
-          <div className="lg:col-span-5 space-y-3.5">
-            <h2 className="text-xl sm:text-2xl lg:text-[24px] font-extrabold text-[#0B1528] tracking-tight">
+          <div className="lg:col-span-5 space-y-4">
+            <h2 className="text-xl sm:text-2xl lg:text-[24px] font-extrabold text-[#0B1528] tracking-tight text-left">
               What Our Customers Say
             </h2>
 
-            {/* Testimonial Box with side arrows */}
-            <div className="flex items-center gap-1.5 xs:gap-2 sm:gap-2.5">
+            {/* Desktop / Tablet Testimonial Box with side arrows */}
+            <div className="hidden sm:flex items-center gap-2 sm:gap-2.5">
               {/* Prev Button */}
               <button
                 onClick={prevSlide}
                 aria-label="Previous testimonial"
-                className="w-7 h-7 xs:w-8 xs:h-8 rounded-full bg-white border border-slate-200/90 shadow-xs flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all shrink-0 cursor-pointer"
+                className="w-8 h-8 rounded-full bg-white border border-slate-200/90 shadow-xs flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all shrink-0 cursor-pointer"
               >
-                <ChevronLeft className="w-3.5 h-3.5 xs:w-4 xs:h-4" />
+                <ChevronLeft className="w-4 h-4" />
               </button>
 
               {/* Card */}
-              <div className="flex-1 bg-white rounded-2xl p-3 xs:p-4 sm:p-5 border border-slate-200/90 shadow-[0_2px_8px_rgba(0,0,0,0.03)] flex items-center gap-2.5 xs:gap-3 sm:gap-4 min-h-[135px]">
+              <div className="flex-1 bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/90 shadow-[0_2px_8px_rgba(0,0,0,0.03)] flex items-center gap-4 min-h-[145px]">
                 {/* Avatar */}
-                <div className="w-12 h-12 xs:w-14 xs:h-14 sm:w-18 sm:h-18 rounded-full overflow-hidden shrink-0 border border-slate-200/80 bg-slate-100">
+                <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-full overflow-hidden shrink-0 border border-slate-200/80 bg-slate-100">
                   <img
                     src={current.avatar}
                     alt={current.name}
@@ -108,16 +108,16 @@ export default function TestimonialsAndKnowledge({ onNavigateResources }) {
 
                 {/* Content */}
                 <div className="flex-1 min-w-0">
-                  <p className="text-[11.5px] xs:text-xs sm:text-[12.5px] text-slate-700 font-medium leading-relaxed mb-2.5">
+                  <p className="text-xs sm:text-[12.5px] text-slate-700 font-medium leading-relaxed mb-3">
                     "{current.quote}"
                   </p>
 
-                  <div className="flex items-center justify-between gap-1.5 flex-wrap">
+                  <div className="flex items-center justify-between gap-2">
                     <div>
-                      <h4 className="text-[11.5px] xs:text-xs sm:text-[13px] font-bold text-[#0B1528] leading-tight">
+                      <h4 className="text-xs sm:text-[13px] font-bold text-[#0B1528] leading-tight">
                         {current.name}
                       </h4>
-                      <p className="text-[9.5px] xs:text-[10.5px] sm:text-[11px] text-slate-500 font-normal mt-0.5">
+                      <p className="text-[10.5px] sm:text-[11px] text-slate-500 font-normal mt-0.5">
                         {current.role}
                       </p>
                     </div>
@@ -125,7 +125,7 @@ export default function TestimonialsAndKnowledge({ onNavigateResources }) {
                     {/* 5 Stars */}
                     <div className="flex items-center gap-0.5">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-3 h-3 xs:w-3.5 xs:h-3.5 fill-[#F59E0B] text-[#F59E0B]" />
+                        <Star key={i} className="w-3.5 h-3.5 fill-[#F59E0B] text-[#F59E0B]" />
                       ))}
                     </div>
                   </div>
@@ -136,14 +136,14 @@ export default function TestimonialsAndKnowledge({ onNavigateResources }) {
               <button
                 onClick={nextSlide}
                 aria-label="Next testimonial"
-                className="w-7 h-7 xs:w-8 xs:h-8 rounded-full bg-white border border-slate-200/90 shadow-xs flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all shrink-0 cursor-pointer"
+                className="w-8 h-8 rounded-full bg-white border border-slate-200/90 shadow-xs flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all shrink-0 cursor-pointer"
               >
-                <ChevronRight className="w-3.5 h-3.5 xs:w-4 xs:h-4" />
+                <ChevronRight className="w-4 h-4" />
               </button>
             </div>
 
-            {/* Pagination Dots */}
-            <div className="flex justify-center items-center gap-1.5 pt-1">
+            {/* Desktop Pagination Dots */}
+            <div className="hidden sm:flex justify-center items-center gap-1.5 pt-1">
               {testimonials.map((_, i) => (
                 <button
                   key={i}
@@ -155,30 +155,102 @@ export default function TestimonialsAndKnowledge({ onNavigateResources }) {
                 />
               ))}
             </div>
+
+            {/* Mobile Layout: Full-width Card with bottom controls */}
+            <div className="block sm:hidden space-y-3">
+              <div className="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-[0_2px_8px_rgba(0,0,0,0.03)] space-y-3">
+                <p className="text-xs text-slate-700 font-medium leading-relaxed">
+                  "{current.quote}"
+                </p>
+
+                <div className="flex items-center justify-between pt-1 border-t border-slate-100">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-10 h-10 rounded-full overflow-hidden shrink-0 border border-slate-200/80 bg-slate-100">
+                      <img
+                        src={current.avatar}
+                        alt={current.name}
+                        className="w-full h-full object-cover object-top"
+                        onError={(e) => {
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80";
+                        }}
+                      />
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-[#0B1528] leading-tight">
+                        {current.name}
+                      </h4>
+                      <p className="text-[10px] text-slate-500 font-normal">
+                        {current.role}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* 5 Stars */}
+                  <div className="flex items-center gap-0.5 shrink-0">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-3 h-3 fill-[#F59E0B] text-[#F59E0B]" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Mobile controls: Prev + Dots + Next */}
+              <div className="flex items-center justify-between px-2 pt-0.5">
+                <button
+                  onClick={prevSlide}
+                  aria-label="Previous testimonial"
+                  className="w-8 h-8 rounded-full bg-white border border-slate-200/90 shadow-xs flex items-center justify-center text-slate-600 hover:text-slate-900 transition-colors cursor-pointer"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+
+                <div className="flex items-center gap-1.5">
+                  {testimonials.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrentIndex(i)}
+                      className={`h-2 rounded-full transition-all ${
+                        currentIndex === i ? 'bg-[#0052CC] w-4' : 'bg-slate-300 w-2'
+                      }`}
+                      aria-label={`Go to slide ${i + 1}`}
+                    />
+                  ))}
+                </div>
+
+                <button
+                  onClick={nextSlide}
+                  aria-label="Next testimonial"
+                  className="w-8 h-8 rounded-full bg-white border border-slate-200/90 shadow-xs flex items-center justify-center text-slate-600 hover:text-slate-900 transition-colors cursor-pointer"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* Right Column: Latest from Our Knowledge Centre */}
-          <div className="lg:col-span-7 space-y-3.5 lg:border-l lg:border-slate-200/80 lg:pl-8 xl:pl-10">
+          <div className="lg:col-span-7 space-y-4 lg:border-l lg:border-slate-200/80 lg:pl-8 xl:pl-10">
             <div className="flex items-center justify-between">
               <h2 className="text-xl sm:text-2xl lg:text-[24px] font-extrabold text-[#0B1528] tracking-tight">
                 Latest from Our Knowledge Centre
               </h2>
               <button
                 onClick={onNavigateResources}
-                className="inline-flex items-center gap-1 text-xs sm:text-[13px] font-bold text-[#0052CC] hover:text-[#003D99] transition-colors cursor-pointer group"
+                className="inline-flex items-center gap-1 text-xs sm:text-[13px] font-bold text-[#0052CC] hover:text-[#003D99] transition-colors cursor-pointer group shrink-0 ml-2"
               >
                 <span>View All Blogs</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
 
-            {/* 3 Blog Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-3.5">
+            {/* 3 Blog Cards: Horizontal Swipeable on Mobile, 3-column Grid on Desktop */}
+            <div className="flex sm:grid sm:grid-cols-3 gap-3 sm:gap-3.5 overflow-x-auto pb-2 pt-1 -mx-4 px-4 sm:mx-0 sm:px-0 snap-x scrollbar-none">
               {articles.map((item, index) => (
                 <article
                   key={index}
                   onClick={onNavigateResources}
-                  className="bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-md transition-all duration-300 group flex flex-col justify-between cursor-pointer"
+                  className="min-w-[240px] xs:min-w-[260px] sm:min-w-0 snap-start bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-md transition-all duration-300 group flex flex-col justify-between cursor-pointer shrink-0 sm:shrink"
                 >
                   <div>
                     {/* Thumbnail */}
