@@ -213,13 +213,13 @@ export default function Navbar({
             </button>
           </div>
 
-          {/* Mobile Right Action Bar: Call + WhatsApp + Demo Pill + Hamburger */}
-          <div className="flex lg:hidden items-center gap-1 xs:gap-1.5 sm:gap-2 shrink-0">
+          {/* Mobile Right Action Bar: Call + WhatsApp + Hamburger */}
+          <div className="flex lg:hidden items-center gap-1.5 xs:gap-2 shrink-0">
             {/* Quick Call Icon Button on mobile */}
             <a
               href="tel:+919876543210"
               aria-label="Call H S ENTERPRISES"
-              className="w-7 h-7 xs:w-8 xs:h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-[#0B1528] flex items-center justify-center transition-colors"
+              className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-[#0B1528] flex items-center justify-center transition-colors shrink-0"
             >
               <Phone className="w-3.5 h-3.5 fill-current" />
             </a>
@@ -230,26 +230,18 @@ export default function Navbar({
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
-              className="w-7 h-7 xs:w-8 xs:h-8 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white flex items-center justify-center shadow-xs transition-transform active:scale-95"
+              className="w-8 h-8 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white flex items-center justify-center shadow-xs transition-transform active:scale-95 shrink-0"
             >
               <WhatsAppIcon />
             </a>
 
-            {/* Get a Demo compact pill button for tablet */}
-            <button
-              onClick={onOpenDemoModal}
-              className="hidden md:inline-flex bg-[#0052CC] hover:bg-[#003D99] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-xs transition-colors whitespace-nowrap cursor-pointer"
-            >
-              Demo
-            </button>
-
             {/* Hamburger / Close Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="w-7.5 h-7.5 xs:w-8 xs:h-8 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-100 flex items-center justify-center focus:outline-none transition-colors cursor-pointer"
+              className="w-8 h-8 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-100 flex items-center justify-center focus:outline-none transition-colors ml-0.5 shrink-0 cursor-pointer"
               aria-label="Toggle Navigation"
             >
-              {mobileMenuOpen ? <X className="w-4.5 h-4.5" /> : <Menu className="w-4.5 h-4.5" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
 

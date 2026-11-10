@@ -42,7 +42,7 @@ export const TallyPartnerBadge = ({ light = false }) => (
         }}
       />
     </div>
-    <div className="hidden sm:flex flex-col text-left">
+    <div className="hidden lg:flex flex-col text-left shrink-0">
       <span className={`text-[9.5px] sm:text-[10.5px] font-bold leading-tight ${light ? 'text-slate-200' : 'text-[#0B1528]'}`}>
         Authorized
       </span>
