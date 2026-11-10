@@ -50,9 +50,9 @@ export default function WhyChooseUsAndProcess() {
               Why Choose Us?
             </h2>
 
-            <div className="flex items-center gap-4 sm:gap-5">
+            <div className="flex items-center gap-3 xs:gap-4 sm:gap-5">
               {/* Team Photo */}
-              <div className="w-40 sm:w-48 h-36 sm:h-44 rounded-2xl overflow-hidden shadow-sm border border-slate-200/80 shrink-0 bg-slate-100">
+              <div className="w-28 xs:w-36 sm:w-48 h-32 xs:h-36 sm:h-44 rounded-2xl overflow-hidden shadow-sm border border-slate-200/80 shrink-0 bg-slate-100">
                 <img
                   src="/images/team-exact.jpg"
                   alt="BizTech Implementation Team"
@@ -86,8 +86,8 @@ export default function WhyChooseUsAndProcess() {
               Our Implementation Process
             </h2>
 
-            {/* 5-Step Process Timeline */}
-            <div className="relative pt-2">
+            {/* Desktop 5-Step Process Timeline (hidden on mobile) */}
+            <div className="hidden md:block relative pt-2">
               <div className="grid grid-cols-5 gap-1 sm:gap-2 relative">
                 
                 {/* Connecting Arrow Lines between the circles */}
@@ -119,6 +119,33 @@ export default function WhyChooseUsAndProcess() {
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* Mobile Vertical Stepped Timeline (visible on mobile) */}
+            <div className="block md:hidden pt-2 pl-1 space-y-1">
+              {steps.map((step, idx) => (
+                <div key={step.num} className="relative flex items-start gap-3.5 pb-3">
+                  {/* Step Circle */}
+                  <div className="relative z-10 w-7 h-7 rounded-full bg-[#0066FF] text-white flex items-center justify-center font-bold text-xs shadow-sm ring-4 ring-white shrink-0">
+                    {step.num}
+                  </div>
+
+                  {/* Connecting Vertical Line */}
+                  {idx < steps.length - 1 && (
+                    <div className="absolute left-[13px] top-6 bottom-0 w-[2px] bg-[#93C5FD]" />
+                  )}
+
+                  {/* Step Content */}
+                  <div className="text-left pt-0.5">
+                    <h3 className="text-[13px] font-bold text-[#0B1528] leading-tight">
+                      {step.title}
+                    </h3>
+                    <p className="text-[11px] text-slate-500 leading-relaxed font-normal mt-0.5">
+                      {step.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 

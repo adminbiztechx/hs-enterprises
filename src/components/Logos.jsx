@@ -1,8 +1,8 @@
 import React from 'react';
 
 export const BizTechLogo = ({ className = "h-8", light = false }) => (
-  <div className={`flex items-center gap-2.5 ${className}`}>
-    <div className="relative w-8 h-8 shrink-0 flex items-center justify-center">
+  <div className={`flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 ${className}`}>
+    <div className="relative w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 shrink-0 flex items-center justify-center">
       <svg viewBox="0 0 36 36" fill="none" className="w-full h-full">
         {/* Top green wings */}
         <path d="M11 6.5C14 4.5 18 5 18 8C18 11.5 13.5 13.5 11 13.5C8.8 13.5 8 11.8 8.8 9.2C9.4 7.5 10.2 6.8 11 6.5Z" fill="#16A34A" />
@@ -14,12 +14,12 @@ export const BizTechLogo = ({ className = "h-8", light = false }) => (
     </div>
     <div className="flex flex-col text-left">
       <div className="flex items-baseline">
-        <span className={`font-extrabold text-[17px] sm:text-[18px] tracking-tight leading-none ${light ? 'text-white' : 'text-[#0B1528]'}`}>
+        <span className={`font-extrabold text-[13px] xs:text-[15px] sm:text-[18px] tracking-tight leading-none ${light ? 'text-white' : 'text-[#0B1528]'}`}>
           BizTech Solutions
         </span>
-        <span className="text-[10px] font-bold text-slate-400 ml-0.5">®</span>
+        <span className="text-[8px] sm:text-[10px] font-bold text-slate-400 ml-0.5">®</span>
       </div>
-      <span className={`text-[10px] sm:text-[10.5px] font-medium tracking-tight mt-0.5 leading-none ${light ? 'text-slate-300' : 'text-[#334155]'}`}>
+      <span className={`text-[7.5px] xs:text-[8px] sm:text-[10px] font-medium tracking-tight mt-0.5 leading-none ${light ? 'text-slate-300' : 'text-[#334155]'}`}>
         Business Technology Partner
       </span>
     </div>
@@ -31,22 +31,22 @@ export const HSEnterprisesLogo = ({ className = "h-8", light = false }) => (
 );
 
 export const TallyPartnerBadge = ({ light = false }) => (
-  <div className={`flex items-center gap-2 pl-3.5 border-l ${light ? 'border-slate-700' : 'border-slate-200/90'}`}>
+  <div className={`flex items-center gap-1 xs:gap-1.5 sm:gap-2 pl-1.5 xs:pl-2 sm:pl-3.5 border-l ${light ? 'border-slate-700' : 'border-slate-200/90'}`}>
     <div className="flex items-center shrink-0">
       <img
         src="/images/tally-script-logo.png"
         alt="Tally"
-        className="h-6 sm:h-7 object-contain"
+        className="h-4.5 xs:h-5 sm:h-7 object-contain"
         onError={(e) => {
           e.currentTarget.style.display = 'none';
         }}
       />
     </div>
-    <div className="flex flex-col text-left">
-      <span className={`text-[10.5px] font-bold leading-tight ${light ? 'text-slate-200' : 'text-[#0B1528]'}`}>
+    <div className="hidden sm:flex flex-col text-left">
+      <span className={`text-[9.5px] sm:text-[10.5px] font-bold leading-tight ${light ? 'text-slate-200' : 'text-[#0B1528]'}`}>
         Authorized
       </span>
-      <span className={`text-[10.5px] font-bold leading-tight ${light ? 'text-slate-300' : 'text-[#0B1528]'}`}>
+      <span className={`text-[9.5px] sm:text-[10.5px] font-bold leading-tight ${light ? 'text-slate-300' : 'text-[#0B1528]'}`}>
         Tally Partner
       </span>
     </div>

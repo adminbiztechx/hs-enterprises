@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: '380px',
+      },
       colors: {
         biztech: {
           navy: '#0A1E3B',

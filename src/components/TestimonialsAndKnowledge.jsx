@@ -81,20 +81,20 @@ export default function TestimonialsAndKnowledge({ onNavigateResources }) {
             </h2>
 
             {/* Testimonial Box with side arrows */}
-            <div className="flex items-center gap-2 sm:gap-2.5">
+            <div className="flex items-center gap-1.5 xs:gap-2 sm:gap-2.5">
               {/* Prev Button */}
               <button
                 onClick={prevSlide}
                 aria-label="Previous testimonial"
-                className="w-8 h-8 rounded-full bg-white border border-slate-200/90 shadow-xs flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all shrink-0 cursor-pointer"
+                className="w-7 h-7 xs:w-8 xs:h-8 rounded-full bg-white border border-slate-200/90 shadow-xs flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all shrink-0 cursor-pointer"
               >
-                <ChevronLeft className="w-4 h-4" />
+                <ChevronLeft className="w-3.5 h-3.5 xs:w-4 xs:h-4" />
               </button>
 
               {/* Card */}
-              <div className="flex-1 bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/90 shadow-[0_2px_8px_rgba(0,0,0,0.03)] flex items-center gap-4 min-h-[145px]">
+              <div className="flex-1 bg-white rounded-2xl p-3 xs:p-4 sm:p-5 border border-slate-200/90 shadow-[0_2px_8px_rgba(0,0,0,0.03)] flex items-center gap-2.5 xs:gap-3 sm:gap-4 min-h-[135px]">
                 {/* Avatar */}
-                <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-full overflow-hidden shrink-0 border border-slate-200/80 bg-slate-100">
+                <div className="w-12 h-12 xs:w-14 xs:h-14 sm:w-18 sm:h-18 rounded-full overflow-hidden shrink-0 border border-slate-200/80 bg-slate-100">
                   <img
                     src={current.avatar}
                     alt={current.name}
@@ -108,16 +108,16 @@ export default function TestimonialsAndKnowledge({ onNavigateResources }) {
 
                 {/* Content */}
                 <div className="flex-1 min-w-0">
-                  <p className="text-xs sm:text-[12.5px] text-slate-700 font-medium leading-relaxed mb-3">
+                  <p className="text-[11.5px] xs:text-xs sm:text-[12.5px] text-slate-700 font-medium leading-relaxed mb-2.5">
                     "{current.quote}"
                   </p>
 
-                  <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center justify-between gap-1.5 flex-wrap">
                     <div>
-                      <h4 className="text-xs sm:text-[13px] font-bold text-[#0B1528] leading-tight">
+                      <h4 className="text-[11.5px] xs:text-xs sm:text-[13px] font-bold text-[#0B1528] leading-tight">
                         {current.name}
                       </h4>
-                      <p className="text-[10.5px] sm:text-[11px] text-slate-500 font-normal mt-0.5">
+                      <p className="text-[9.5px] xs:text-[10.5px] sm:text-[11px] text-slate-500 font-normal mt-0.5">
                         {current.role}
                       </p>
                     </div>
@@ -125,7 +125,7 @@ export default function TestimonialsAndKnowledge({ onNavigateResources }) {
                     {/* 5 Stars */}
                     <div className="flex items-center gap-0.5">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-3.5 h-3.5 fill-[#F59E0B] text-[#F59E0B]" />
+                        <Star key={i} className="w-3 h-3 xs:w-3.5 xs:h-3.5 fill-[#F59E0B] text-[#F59E0B]" />
                       ))}
                     </div>
                   </div>
@@ -136,9 +136,9 @@ export default function TestimonialsAndKnowledge({ onNavigateResources }) {
               <button
                 onClick={nextSlide}
                 aria-label="Next testimonial"
-                className="w-8 h-8 rounded-full bg-white border border-slate-200/90 shadow-xs flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all shrink-0 cursor-pointer"
+                className="w-7 h-7 xs:w-8 xs:h-8 rounded-full bg-white border border-slate-200/90 shadow-xs flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all shrink-0 cursor-pointer"
               >
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-3.5 h-3.5 xs:w-4 xs:h-4" />
               </button>
             </div>
 
