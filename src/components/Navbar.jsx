@@ -28,6 +28,12 @@ export default function Navbar({
 
   const navItems = [
     {
+      name: 'Home',
+      onClick: onNavigateHome,
+      isActive: currentPage === 'home',
+      dropdown: null
+    },
+    {
       name: 'Products',
       onClick: onNavigateProducts,
       isActive: currentPage === 'products',
@@ -127,13 +133,13 @@ export default function Navbar({
             <TallyPartnerBadge />
           </div>
 
-          {/* Center Navigation Links (Each with ChevronDown) */}
-          <nav className="hidden lg:flex items-center gap-3 xl:gap-5 2xl:gap-7">
+          {/* Center Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-2 xl:gap-4 2xl:gap-6">
             {navItems.map((item) => (
               <div 
                 key={item.name} 
                 className="relative group py-2"
-                onMouseEnter={() => setActiveDropdown(item.name)}
+                onMouseEnter={() => item.dropdown && setActiveDropdown(item.name)}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
                 <button
@@ -145,7 +151,9 @@ export default function Navbar({
                   }`}
                 >
                   <span className="whitespace-nowrap">{item.name}</span>
-                  <ChevronDown className="w-3 h-3 xl:w-3.5 xl:h-3.5 text-slate-500 group-hover:text-[#0052CC] transition-transform duration-200 group-hover:rotate-180" />
+                  {item.dropdown && (
+                    <ChevronDown className="w-3 h-3 xl:w-3.5 xl:h-3.5 text-slate-500 group-hover:text-[#0052CC] transition-transform duration-200 group-hover:rotate-180" />
+                  )}
                 </button>
 
                 {/* Dropdown Menu */}
