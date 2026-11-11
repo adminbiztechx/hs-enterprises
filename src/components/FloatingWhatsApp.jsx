@@ -3,7 +3,7 @@ import { MessageCircle } from 'lucide-react';
 
 export default function FloatingWhatsApp() {
   return (
-    <aside aria-label="Quick WhatsApp Contact" className="fixed bottom-6 right-6 z-40 flex items-center group">
+    <aside aria-label="Quick WhatsApp Contact" className="hidden md:flex fixed bottom-6 right-6 z-40 items-center group">
       {/* Tooltip badge on hover */}
       <div className="hidden md:flex items-center mr-3 bg-white px-3 py-1.5 rounded-full shadow-lg border border-slate-200/80 text-xs font-bold text-slate-800 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
         <span>Chat with Tally Expert</span>

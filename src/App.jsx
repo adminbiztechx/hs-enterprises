@@ -13,6 +13,7 @@ import BottomCTA from './components/BottomCTA';
 import Footer from './components/Footer';
 import LeadModal from './components/LeadModal';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import MobileBottomNav from './components/MobileBottomNav';
 import ProductPage from './pages/ProductPage';
 import ServicesPage from './pages/ServicesPage';
 import IndustriesPage from './pages/IndustriesPage';
@@ -120,7 +121,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-[#F8FAFC] selection:bg-[#0052CC] selection:text-white overflow-x-hidden">
+    <div className="min-h-screen w-full flex flex-col bg-[#F8FAFC] selection:bg-[#0052CC] selection:text-white overflow-x-hidden pb-16 md:pb-0">
       {/* 1. Header / Navbar */}
       <Navbar
         currentPage={currentPage}
@@ -260,8 +261,16 @@ export default function App() {
         type={modalState.type}
       />
 
-      {/* Quick WhatsApp Action Floating Button */}
+      {/* Quick WhatsApp Action Floating Button (Desktop) */}
       <FloatingWhatsApp />
+
+      {/* Mobile Bottom Navigation Bar (Mobile / Responsive) */}
+      <MobileBottomNav
+        currentPage={currentPage}
+        onNavigateHome={navigateToHome}
+        onNavigateProducts={navigateToProducts}
+        onOpenConsultModal={openConsultModal}
+      />
     </div>
   );
 }
