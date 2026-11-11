@@ -165,18 +165,30 @@ export default function Challenges({ onOpenConsultModal }) {
                 return (
                   <div
                     key={index}
-                    className="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/90 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-md hover:border-slate-300 transition-all duration-200 flex items-center gap-3.5 sm:gap-4 group"
+                    onClick={onOpenConsultModal}
+                    className="relative overflow-hidden bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/90 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_14px_30px_-6px_rgba(0,82,204,0.16),0_6px_12px_-4px_rgba(0,82,204,0.08)] hover:border-[#0052CC] hover:ring-2 hover:ring-[#0052CC]/15 hover:-translate-y-1.5 active:scale-[0.98] transition-all duration-300 ease-out flex items-center gap-3.5 sm:gap-4 group cursor-pointer"
                   >
-                    <div className="shrink-0 flex items-center justify-center">
+                    {/* Left Accent Bar on Hover */}
+                    <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#0052CC] scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-center rounded-r" />
+
+                    {/* Icon with Hover Animation */}
+                    <div className="shrink-0 flex items-center justify-center w-12 h-12 rounded-xl bg-slate-50 group-hover:bg-blue-50/80 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300 ease-out">
                       <IconComponent />
                     </div>
+
+                    {/* Content */}
                     <div className="min-w-0 flex-1">
-                      <h3 className="text-[15px] sm:text-[15.5px] font-bold text-[#0B1528] tracking-tight leading-snug">
+                      <h3 className="text-[15px] sm:text-[15.5px] font-bold text-[#0B1528] group-hover:text-[#0052CC] tracking-tight leading-snug transition-colors duration-200">
                         {item.title}
                       </h3>
                       <p className="text-xs sm:text-[12.5px] text-slate-500 leading-snug sm:leading-relaxed mt-0.5 font-normal">
                         {item.desc}
                       </p>
+                    </div>
+
+                    {/* Hover Slide-in Action Arrow */}
+                    <div className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#0052CC] shrink-0">
+                      <ArrowRight className="w-4 h-4" />
                     </div>
                   </div>
                 );
