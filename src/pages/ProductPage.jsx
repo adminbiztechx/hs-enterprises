@@ -211,17 +211,17 @@ export default function ProductPage({
     <div className="w-full bg-[#F8FAFC]">
       
       {/* 1 & 2. Hero Section with 2.5K Ultra HD Banner & Full Interactive Animations */}
-      <section className="relative w-full bg-[#032149] overflow-hidden py-3 sm:py-5 lg:py-6">
+      <section className="relative w-full bg-[#032149] overflow-hidden py-0 sm:py-5 lg:py-6">
         
         {/* Ambient Animated Glow Lights */}
         <div className="absolute -top-32 -left-32 w-96 h-96 bg-blue-600/25 rounded-full blur-3xl pointer-events-none animate-banner-glow" />
         <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none animate-banner-glow" />
 
-        {/* Max width container matching site layout */}
-        <div className="w-full max-w-[1720px] mx-auto px-2 sm:px-4 lg:px-8 relative z-10">
+        {/* Full-bleed on mobile (px-0), max-width container on desktop */}
+        <div className="w-full max-w-[1720px] mx-auto px-0 sm:px-4 lg:px-8 relative z-10">
           
-          {/* Main HD Banner Card with Smooth Shadow and Glowing Border */}
-          <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-sky-800/60 bg-[#03234D] group transition-all duration-500 hover:shadow-sky-500/10">
+          {/* Main HD Banner: Edge-to-edge full width on mobile (no gaps, rounded-none, border-0) */}
+          <div className="relative w-full rounded-none sm:rounded-3xl overflow-hidden shadow-none sm:shadow-2xl border-0 sm:border sm:border-sky-800/60 bg-[#03234D] group transition-all duration-500 hover:shadow-sky-500/10">
             
             {/* 2.5K Ultra HD Banner Image */}
             <picture>

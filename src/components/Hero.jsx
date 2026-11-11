@@ -2,12 +2,12 @@ import React from 'react';
 
 export default function Hero({ onOpenConsultModal, onNavigateProducts }) {
   return (
-    <section className="relative w-full bg-[#032552] overflow-hidden">
-      {/* Max width container */}
-      <div className="w-full max-w-[1720px] mx-auto px-2 sm:px-4 lg:px-8 py-2 sm:py-5 lg:py-6">
+    <section className="relative w-full bg-[#032552] overflow-hidden py-0 sm:py-5 lg:py-6">
+      {/* Container: Full bleed on mobile (px-0), max-width on desktop */}
+      <div className="w-full max-w-[1720px] mx-auto px-0 sm:px-4 lg:px-8">
         
-        {/* HD Hero Banner Container */}
-        <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-sky-900/50 bg-[#032552]">
+        {/* HD Hero Banner Container: Edge-to-edge full width on mobile (0 gap, rounded-none, border-0) */}
+        <div className="relative w-full rounded-none sm:rounded-3xl overflow-hidden shadow-none sm:shadow-2xl border-0 sm:border sm:border-sky-900/50 bg-[#032552]">
           
           {/* 2.5K Ultra HD Banner Image */}
           <picture>
