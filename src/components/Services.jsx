@@ -77,31 +77,67 @@ export default function Services({ onNavigateServices, onOpenConsultModal }) {
       title: 'Implementation',
       desc: 'Installation, configuration and go-live support.',
       icon: ImplementationGearIcon,
+      // Logo color: Royal Blue (#0066FF)
+      gradientBg: 'bg-gradient-to-br from-blue-50/95 via-sky-50/75 to-indigo-50/85 hover:from-blue-100/95 hover:via-sky-100/85 hover:to-indigo-100/95',
+      borderStyle: 'border-blue-200/90 hover:border-blue-400 hover:ring-2 hover:ring-blue-400/25',
+      topBar: 'from-[#0047AB] via-[#0066FF] to-[#00D4FF]',
+      shadowStyle: 'hover:shadow-[0_16px_32px_-8px_rgba(0,102,255,0.22)]',
+      iconGlow: 'bg-gradient-to-tr from-blue-100/90 to-sky-100/80 text-[#0066FF]',
     },
     {
       title: 'Customization',
       desc: 'TDL, customized reports and business workflows.',
       icon: CustomizationCodeIcon,
+      // Logo color: Vibrant Emerald Green (#16A34A)
+      gradientBg: 'bg-gradient-to-br from-emerald-50/95 via-green-50/75 to-teal-50/85 hover:from-emerald-100/95 hover:via-green-100/85 hover:to-teal-100/95',
+      borderStyle: 'border-emerald-200/90 hover:border-emerald-400 hover:ring-2 hover:ring-emerald-400/25',
+      topBar: 'from-[#15803D] via-[#16A34A] to-[#22C55E]',
+      shadowStyle: 'hover:shadow-[0_16px_32px_-8px_rgba(22,163,74,0.22)]',
+      iconGlow: 'bg-gradient-to-tr from-emerald-100/90 to-green-100/80 text-[#16A34A]',
     },
     {
       title: 'Business Automation',
       desc: 'WhatsApp, CRM and third-party integrations.',
       icon: AutomationTreeIcon,
+      // Logo color: Teal (#0D9488)
+      gradientBg: 'bg-gradient-to-br from-teal-50/95 via-cyan-50/75 to-emerald-50/85 hover:from-teal-100/95 hover:via-cyan-100/85 hover:to-emerald-100/95',
+      borderStyle: 'border-teal-200/90 hover:border-teal-400 hover:ring-2 hover:ring-teal-400/25',
+      topBar: 'from-[#0D9488] via-[#06B6D4] to-[#10B981]',
+      shadowStyle: 'hover:shadow-[0_16px_32px_-8px_rgba(13,148,136,0.22)]',
+      iconGlow: 'bg-gradient-to-tr from-teal-100/90 to-cyan-100/80 text-[#0D9488]',
     },
     {
       title: 'Support & AMC',
       desc: 'Remote support, maintenance and renewals.',
       icon: SupportHeadsetIcon,
+      // Logo color: Green (#16A34A)
+      gradientBg: 'bg-gradient-to-br from-green-50/95 via-emerald-50/75 to-teal-50/85 hover:from-green-100/95 hover:via-emerald-100/85 hover:to-teal-100/95',
+      borderStyle: 'border-green-200/90 hover:border-green-400 hover:ring-2 hover:ring-green-400/25',
+      topBar: 'from-[#15803D] via-[#16A34A] to-[#34D399]',
+      shadowStyle: 'hover:shadow-[0_16px_32px_-8px_rgba(22,163,74,0.22)]',
+      iconGlow: 'bg-gradient-to-tr from-green-100/90 to-emerald-100/80 text-[#16A34A]',
     },
     {
       title: 'Training',
       desc: 'Tally and process training for your team.',
       icon: TrainingCapIcon,
+      // Logo color: Royal Purple (#7C3AED)
+      gradientBg: 'bg-gradient-to-br from-purple-50/95 via-violet-50/75 to-fuchsia-50/85 hover:from-purple-100/95 hover:via-violet-100/85 hover:to-fuchsia-100/95',
+      borderStyle: 'border-purple-200/90 hover:border-purple-400 hover:ring-2 hover:ring-purple-400/25',
+      topBar: 'from-[#6D28D9] via-[#7C3AED] to-[#C084FC]',
+      shadowStyle: 'hover:shadow-[0_16px_32px_-8px_rgba(124,58,237,0.22)]',
+      iconGlow: 'bg-gradient-to-tr from-purple-100/90 to-fuchsia-100/80 text-[#7C3AED]',
     },
     {
       title: 'Business Consulting',
       desc: 'MIS, reporting and technology advisory.',
       icon: ConsultingBarsIcon,
+      // Logo color: Blue (#0066FF)
+      gradientBg: 'bg-gradient-to-br from-sky-50/95 via-blue-50/75 to-indigo-50/85 hover:from-sky-100/95 hover:via-blue-100/85 hover:to-indigo-100/95',
+      borderStyle: 'border-blue-200/90 hover:border-blue-400 hover:ring-2 hover:ring-blue-400/25',
+      topBar: 'from-[#0047AB] via-[#0066FF] to-[#38BDF8]',
+      shadowStyle: 'hover:shadow-[0_16px_32px_-8px_rgba(0,102,255,0.22)]',
+      iconGlow: 'bg-gradient-to-tr from-blue-100/90 to-sky-100/80 text-[#0066FF]',
     },
   ];
 
@@ -146,17 +182,25 @@ export default function Services({ onNavigateServices, onOpenConsultModal }) {
                   <div
                     key={index}
                     onClick={handleServiceClick}
-                    className="bg-white rounded-2xl p-4 sm:p-4.5 border border-slate-200/90 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col items-center text-center justify-start group cursor-pointer"
+                    className={`relative overflow-hidden rounded-2xl p-4 sm:p-4.5 border ${service.borderStyle} ${service.gradientBg} shadow-sm ${service.shadowStyle} hover:-translate-y-2 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 ease-out flex flex-col items-center text-center justify-start group cursor-pointer`}
                   >
-                    <div className="mb-3 shrink-0 flex items-center justify-center w-10 h-10 group-hover:scale-105 transition-transform">
-                      <Icon />
+                    {/* Top Gradient Accent Bar matching exact logo colors */}
+                    <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${service.topBar} rounded-t-2xl`} />
+
+                    {/* Animated Shimmer / Sheen Sweep Effect on Hover */}
+                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/60 to-transparent pointer-events-none" />
+
+                    <div className="relative z-10 w-full flex flex-col items-center">
+                      <div className={`mb-3 shrink-0 flex items-center justify-center w-12 h-12 rounded-xl ${service.iconGlow} shadow-xs group-hover:scale-115 group-hover:-rotate-3 transition-all duration-300`}>
+                        <Icon />
+                      </div>
+                      <h3 className="text-[14px] sm:text-[14.5px] font-bold text-[#0B1528] tracking-tight leading-snug mb-1.5 group-hover:text-[#0052CC] transition-colors">
+                        {service.title}
+                      </h3>
+                      <p className="text-[11.5px] sm:text-[12px] text-slate-600 leading-snug font-normal">
+                        {service.desc}
+                      </p>
                     </div>
-                    <h3 className="text-[14px] sm:text-[14.5px] font-bold text-[#0B1528] tracking-tight leading-snug mb-1.5 group-hover:text-[#0052CC] transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="text-[11.5px] sm:text-[12px] text-slate-500 leading-snug font-normal">
-                      {service.desc}
-                    </p>
                   </div>
                 );
               })}
