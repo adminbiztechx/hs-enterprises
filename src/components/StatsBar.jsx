@@ -86,26 +86,29 @@ export default function StatsBar() {
   ];
 
   return (
-    <section className="relative z-20 w-full -mt-7 sm:-mt-9 mb-4 px-4 sm:px-6 lg:px-10 xl:px-12">
-      <div className="w-full max-w-[1720px] mx-auto bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-[0_6px_25px_rgba(0,0,0,0.06)] px-4 sm:px-8 py-3.5 sm:py-4">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-0 lg:divide-x lg:divide-slate-200/90 items-center">
+    <section className="relative z-20 w-full -mt-7 sm:-mt-9 mb-6 sm:mb-8 px-3.5 sm:px-6 lg:px-10 xl:px-12">
+      <div className="w-full max-w-[1720px] mx-auto bg-white rounded-3xl border border-slate-200/90 shadow-[0_10px_35px_rgba(0,0,0,0.08)] px-5 sm:px-8 py-5 sm:py-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-3 sm:gap-x-6 gap-y-5 sm:gap-y-4 lg:gap-0 lg:divide-x lg:divide-slate-200/90 items-center">
           {stats.map((item, index) => {
             const Icon = item.icon;
+            const isLast = index === stats.length - 1;
             return (
               <div
                 key={index}
-                className={`flex items-center gap-3 sm:gap-3.5 px-2 sm:px-4 lg:px-6 py-1 ${
-                  index === stats.length - 1 ? 'col-span-2 md:col-span-1 justify-center lg:justify-start' : ''
+                className={`flex items-center gap-3 sm:gap-3.5 px-1 sm:px-4 lg:px-6 py-1 ${
+                  isLast
+                    ? 'col-span-2 md:col-span-1 justify-center lg:justify-start pt-1 sm:pt-0'
+                    : 'justify-start'
                 }`}
               >
                 <div className="shrink-0 flex items-center justify-center">
                   <Icon />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[14.5px] sm:text-[15.5px] font-extrabold text-[#0B1528] tracking-tight leading-none">
+                  <span className="text-[14.5px] sm:text-[15.5px] font-extrabold text-[#0B1528] tracking-tight leading-tight">
                     {item.value}
                   </span>
-                  <span className="text-[11.5px] sm:text-[12px] font-medium text-[#334155] leading-tight mt-1">
+                  <span className="text-[11.5px] sm:text-[12px] font-medium text-[#475569] leading-tight mt-0.5">
                     {item.label}
                   </span>
                 </div>

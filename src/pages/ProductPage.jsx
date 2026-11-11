@@ -32,6 +32,7 @@ import {
   TallyAddonsIllustration
 } from '../components/ProductCardIllustrations';
 import { TallyPrimeBadge } from '../components/Logos';
+import StatsBar from '../components/StatsBar';
 
 export default function ProductPage({ 
   onNavigateHome, 
@@ -63,37 +64,6 @@ export default function ProductPage({
     { label: 'GST & Compliance', icon: FileCheck2, color: 'text-indigo-600' },
     { label: 'Reporting & Insights', icon: BarChart3, color: 'text-cyan-600' },
     { label: 'Business Growth', icon: TrendingUp, color: 'text-emerald-600' },
-  ];
-
-  const trustStats = [
-    {
-      icon: ShieldCheck,
-      title: 'Authorised',
-      subtitle: 'Tally Partner',
-      color: 'text-[#0052CC]',
-      bg: 'bg-blue-50',
-    },
-    {
-      icon: Users,
-      title: '500+',
-      subtitle: 'Happy Customers',
-      color: 'text-[#0077B6]',
-      bg: 'bg-sky-50',
-    },
-    {
-      icon: Award,
-      title: 'Certified',
-      subtitle: 'Implementation Team',
-      color: 'text-[#023E8A]',
-      bg: 'bg-indigo-50',
-    },
-    {
-      icon: Headphones,
-      title: 'End-to-End',
-      subtitle: 'Sales & Support',
-      color: 'text-emerald-600',
-      bg: 'bg-emerald-50',
-    },
   ];
 
   const productRange = [
@@ -357,74 +327,11 @@ export default function ProductPage({
 
           </div>
 
-          {/* Mobile Action Bar (Optimized for Small Screens <640px) */}
-          <div className="sm:hidden mt-3 px-2 flex flex-col gap-2.5">
-            <div className="grid grid-cols-2 gap-2">
-              <button
-                onClick={onOpenDemoModal}
-                className="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl bg-[#16A34A] text-white font-bold text-xs shadow-md active:scale-95 transition-all"
-              >
-                <span>Get Demo</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-              <button
-                onClick={onOpenConsultModal}
-                className="inline-flex items-center justify-center px-4 py-3 rounded-xl border border-sky-400/40 bg-white/10 text-white font-semibold text-xs active:scale-95 transition-all"
-              >
-                Talk to Expert
-              </button>
-            </div>
-
-            {/* Mobile Feature Badges Scroll */}
-            <div className="flex items-center gap-2 overflow-x-auto py-1 no-scrollbar text-xs">
-              {heroFeatures.map((feat) => {
-                const Icon = feat.icon;
-                return (
-                  <div
-                    key={feat.label}
-                    className="flex-shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white/10 border border-white/15 text-slate-200 text-[11px] font-medium"
-                  >
-                    <Icon className="w-3 h-3 text-sky-400" />
-                    <span>{feat.label}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
         </div>
       </section>
 
-      {/* 3. Credibility / Partner Stats Bar (4 columns) */}
-      <section className="bg-white border-y border-slate-200 py-6 sm:py-7 shadow-sm w-full">
-        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-4 items-center">
-            {trustStats.map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={idx}
-                  className={`flex items-center gap-3.5 px-2 ${
-                    idx !== 0 ? 'md:border-l md:border-slate-200 md:pl-6' : ''
-                  }`}
-                >
-                  <div className={`w-11 h-11 rounded-full ${item.bg} flex items-center justify-center flex-shrink-0`}>
-                    <Icon className={`w-5 h-5 ${item.color}`} />
-                  </div>
-                  <div>
-                    <h4 className="text-sm sm:text-base font-extrabold text-slate-900 leading-tight">
-                      {item.title}
-                    </h4>
-                    <p className="text-xs font-medium text-slate-500 leading-tight mt-0.5">
-                      {item.subtitle}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      {/* 3. Credibility / Partner Stats Bar (Exact match to reference design) */}
+      <StatsBar />
 
       {/* 4. "Our Tally Product Range" (4 Cards) */}
       <section id="product-range" className="py-16 bg-white border-b border-slate-200/80 w-full scroll-mt-24">
