@@ -229,7 +229,7 @@ export default function ProductPage({
               <img
                 src="/images/product-hero-banner-hd.png"
                 alt="Tally Solutions for Every Business Need - Explore the complete range of Tally products"
-                className="w-full h-auto block select-none pointer-events-none"
+                className="w-full h-auto min-h-[175px] sm:min-h-0 object-cover sm:object-contain block select-none pointer-events-none"
                 loading="eager"
               />
             </picture>

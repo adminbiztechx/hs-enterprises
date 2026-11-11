@@ -86,7 +86,7 @@ export default function StatsBar() {
   ];
 
   return (
-    <section className="relative z-20 w-full -mt-7 sm:-mt-9 mb-6 sm:mb-8 px-3.5 sm:px-6 lg:px-10 xl:px-12">
+    <section className="relative z-20 w-full -mt-4 sm:-mt-9 mb-6 sm:mb-8 px-3.5 sm:px-6 lg:px-10 xl:px-12">
       <div className="w-full max-w-[1720px] mx-auto bg-white rounded-3xl border border-slate-200/90 shadow-[0_10px_35px_rgba(0,0,0,0.08)] px-5 sm:px-8 py-5 sm:py-4">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-3 sm:gap-x-6 gap-y-5 sm:gap-y-4 lg:gap-0 lg:divide-x lg:divide-slate-200/90 items-center">
           {stats.map((item, index) => {
