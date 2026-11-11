@@ -37,13 +37,21 @@ export default function ProductPage({
   onNavigateHome, 
   onOpenDemoModal, 
   onOpenConsultModal,
-  activeProduct = 'editlog'
+  activeProduct = 'tallyprime'
 }) {
-  const [selectedCard, setSelectedCard] = useState(activeProduct || 'editlog');
+  const [selectedCard, setSelectedCard] = useState(activeProduct || 'tallyprime');
 
   useEffect(() => {
     if (activeProduct) {
       setSelectedCard(activeProduct);
+      // Smoothly scroll down to the selected product card so it's centered on screen
+      const timer = setTimeout(() => {
+        const targetEl = document.getElementById(`product-card-${activeProduct}`) || document.getElementById('product-range');
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 150);
+      return () => clearTimeout(timer);
     }
   }, [activeProduct]);
   const heroFeatures = [
@@ -359,7 +367,7 @@ export default function ProductPage({
       </section>
 
       {/* 4. "Our Tally Product Range" (4 Cards) */}
-      <section className="py-16 bg-white border-b border-slate-200/80 w-full">
+      <section id="product-range" className="py-16 bg-white border-b border-slate-200/80 w-full scroll-mt-24">
         <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12">
           
           <div className="text-center max-w-3xl mx-auto mb-12">
@@ -377,17 +385,18 @@ export default function ProductPage({
               return (
                 <div
                   key={product.id}
+                  id={`product-card-${product.id}`}
                   onClick={() => setSelectedCard(product.id)}
                   className={`bg-white rounded-2xl border transition-all duration-300 flex flex-col justify-between overflow-hidden group cursor-pointer ${
                     isPopped
-                      ? '-translate-y-3.5 shadow-2xl border-[#0052CC]/60 ring-2 ring-[#0052CC]/20'
+                      ? '-translate-y-4 shadow-2xl shadow-blue-500/20 border-2 border-[#0052CC] ring-4 ring-[#0052CC]/25 scale-[1.02]'
                       : 'border-slate-200/90 shadow-sm hover:shadow-2xl hover:-translate-y-3.5 hover:border-[#0052CC]/40'
                   }`}
                 >
                   <div>
                     {/* Top Graphic */}
                     <div className={`p-4 ${product.accentBg} border-b border-slate-100 flex items-center justify-center transition-colors ${
-                      isPopped ? 'bg-blue-100/40' : ''
+                      isPopped ? 'bg-blue-100/60' : ''
                     }`}>
                       {product.illustration}
                     </div>

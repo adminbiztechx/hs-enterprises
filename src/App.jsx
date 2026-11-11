@@ -23,7 +23,7 @@ import AboutUsPage from './pages/AboutUsPage';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home'); // 'home' | 'products' | 'services' | 'industries' | 'solutions' | 'resources' | 'about'
-  const [selectedProduct, setSelectedProduct] = useState('editlog');
+  const [selectedProduct, setSelectedProduct] = useState('tallyprime');
   const [modalState, setModalState] = useState({
     isOpen: false,
     type: 'consultation', // 'demo' or 'consultation'
@@ -66,10 +66,14 @@ export default function App() {
   const navigateToProducts = (productId) => {
     if (productId && typeof productId === 'string') {
       setSelectedProduct(productId);
+    } else {
+      setSelectedProduct('tallyprime');
     }
     setCurrentPage('products');
     window.location.hash = '#products';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (!productId) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const navigateToServices = () => {

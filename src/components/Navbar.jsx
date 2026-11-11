@@ -36,8 +36,8 @@ export default function Navbar({
         { name: 'TallyPrime Server', desc: 'Enterprise multi-user concurrency & speed', id: 'server' },
         { name: 'TallyPrime Edit Log', desc: 'Audit trail & regulatory compliance', id: 'editlog' },
         { name: 'Tally Add-ons', desc: 'Custom modules and industry extensions', id: 'addons' },
-        { name: 'Business Software', desc: 'Complementary software for sales & CRM' },
-        { name: 'Custom Applications', desc: 'Tailor-made software built for your business' }
+        { name: 'Business Software', desc: 'Complementary software for sales & CRM', id: 'addons' },
+        { name: 'Custom Applications', desc: 'Tailor-made software built for your business', id: 'addons' }
       ]
     },
     {
