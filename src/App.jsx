@@ -24,6 +24,7 @@ import AboutUsPage from './pages/AboutUsPage';
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home'); // 'home' | 'products' | 'services' | 'industries' | 'solutions' | 'resources' | 'about'
   const [selectedProduct, setSelectedProduct] = useState('tallyprime');
+  const [shouldScrollToProductCard, setShouldScrollToProductCard] = useState(false);
   const [modalState, setModalState] = useState({
     isOpen: false,
     type: 'consultation', // 'demo' or 'consultation'
@@ -66,14 +67,14 @@ export default function App() {
   const navigateToProducts = (productId) => {
     if (productId && typeof productId === 'string') {
       setSelectedProduct(productId);
+      setShouldScrollToProductCard(true);
     } else {
       setSelectedProduct('tallyprime');
+      setShouldScrollToProductCard(false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     setCurrentPage('products');
     window.location.hash = '#products';
-    if (!productId) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
   };
 
   const navigateToServices = () => {
@@ -185,6 +186,7 @@ export default function App() {
             onOpenDemoModal={openDemoModal}
             onOpenConsultModal={openConsultModal}
             activeProduct={selectedProduct}
+            shouldScrollToCard={shouldScrollToProductCard}
           />
         ) : (
           /* Main Homepage */

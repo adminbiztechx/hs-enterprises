@@ -37,14 +37,17 @@ export default function ProductPage({
   onNavigateHome, 
   onOpenDemoModal, 
   onOpenConsultModal,
-  activeProduct = 'tallyprime'
+  activeProduct = 'tallyprime',
+  shouldScrollToCard = false
 }) {
   const [selectedCard, setSelectedCard] = useState(activeProduct || 'tallyprime');
 
   useEffect(() => {
     if (activeProduct) {
       setSelectedCard(activeProduct);
-      // Smoothly scroll down to the selected product card so it's centered on screen
+    }
+    // Only smooth scroll down to the card if specifically requested via dropdown item click
+    if (shouldScrollToCard && activeProduct) {
       const timer = setTimeout(() => {
         const targetEl = document.getElementById(`product-card-${activeProduct}`) || document.getElementById('product-range');
         if (targetEl) {
@@ -53,7 +56,7 @@ export default function ProductPage({
       }, 150);
       return () => clearTimeout(timer);
     }
-  }, [activeProduct]);
+  }, [activeProduct, shouldScrollToCard]);
   const heroFeatures = [
     { label: 'Accounting & Finance', icon: FileSpreadsheet, color: 'text-sky-600' },
     { label: 'Inventory & Operations', icon: Boxes, color: 'text-blue-600' },
@@ -237,101 +240,158 @@ export default function ProductPage({
   return (
     <div className="w-full bg-[#F8FAFC]">
       
-      {/* 1. Breadcrumb Bar */}
-      <div className="bg-[#032149] text-slate-300 py-3 border-b border-white/10 w-full">
-        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 flex items-center gap-2 text-xs">
-          <button
-            onClick={onNavigateHome}
-            className="flex items-center gap-1.5 hover:text-white transition-colors"
-          >
-            <Home className="w-3.5 h-3.5" />
-            <span>Home</span>
-          </button>
-          <span className="text-slate-500">›</span>
-          <span className="text-white font-medium">Products</span>
-        </div>
-      </div>
+      {/* 1 & 2. Hero Section with 2.5K Ultra HD Banner & Full Interactive Animations */}
+      <section className="relative w-full bg-[#032149] overflow-hidden py-3 sm:py-5 lg:py-6">
+        
+        {/* Ambient Animated Glow Lights */}
+        <div className="absolute -top-32 -left-32 w-96 h-96 bg-blue-600/25 rounded-full blur-3xl pointer-events-none animate-banner-glow" />
+        <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none animate-banner-glow" />
 
-      {/* 2. Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-[#03234D] via-[#053775] to-[#0A4B96] text-white pt-8 pb-14 lg:pt-12 lg:pb-16 w-full">
-        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        {/* Max width container matching site layout */}
+        <div className="w-full max-w-[1720px] mx-auto px-2 sm:px-4 lg:px-8 relative z-10">
+          
+          {/* Main HD Banner Card with Smooth Shadow and Glowing Border */}
+          <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-sky-800/60 bg-[#03234D] group transition-all duration-500 hover:shadow-sky-500/10">
             
-            {/* Left Content */}
-            <div className="lg:col-span-6 space-y-5 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/40 text-blue-200 text-[11px] font-bold tracking-wider uppercase">
-                TALLY PRODUCTS
-              </div>
+            {/* 2.5K Ultra HD Banner Image */}
+            <picture>
+              <source srcSet="/images/product-hero-banner-hd.webp" type="image/webp" />
+              <img
+                src="/images/product-hero-banner-hd.png"
+                alt="Tally Solutions for Every Business Need - Explore the complete range of Tally products"
+                className="w-full h-auto block select-none pointer-events-none"
+                loading="eager"
+              />
+            </picture>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
-                Tally Solutions for <br />
-                <span className="text-[#00D4FF]">Every Business Need</span>
-              </h1>
-
-              <p className="text-slate-200 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
-                Explore the complete range of Tally products — from TallyPrime to advanced tools, add-ons and business solutions.
-              </p>
-
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
-                <button
-                  onClick={onOpenDemoModal}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-xs sm:text-sm shadow-lg shadow-green-900/30 hover:scale-105 active:scale-95 transition-all group"
-                >
-                  <span>Get TallyPrime Demo</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
-
-                <button
-                  onClick={onOpenConsultModal}
-                  className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded-full border border-white/60 hover:border-white bg-white/5 hover:bg-white/10 text-white font-semibold text-xs sm:text-sm transition-all backdrop-blur-sm"
-                >
-                  Talk to an Expert
-                </button>
-              </div>
+            {/* Continuous Diagonal Glass Shimmer Sweep Animation */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              <div className="w-1/2 h-full bg-gradient-to-r from-transparent via-white/15 to-transparent -skew-x-12 animate-banner-shimmer" />
             </div>
 
-            {/* Right Visual with Laptop + Vertical Feature Pill Stack */}
-            <div className="lg:col-span-6 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-              
-              {/* Laptop Graphic / Photo */}
-              <div className="relative w-full max-w-[380px] sm:max-w-[420px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 bg-slate-800">
-                <img
-                  src="/images/product-hero-laptop.jpg"
-                  alt="TallyPrime Software on Laptop"
-                  className="w-full h-64 sm:h-72 object-cover object-top hover:scale-105 transition-transform duration-500"
-                  onError={(e) => {
-                    e.currentTarget.onerror = null;
-                    e.currentTarget.src = "/images/blog-tally-guide.jpg";
-                  }}
-                />
-                <div className="absolute top-3 left-3">
-                  <TallyPrimeBadge className="shadow-lg scale-90" />
-                </div>
-              </div>
+            {/* Interactive Hotspot: "Home" Breadcrumb */}
+            <button
+              onClick={onNavigateHome}
+              aria-label="Back to Home"
+              title="Go to Home"
+              className="absolute left-[3.8%] top-[9.5%] w-[6.8%] h-[8%] rounded cursor-pointer hover:bg-white/15 active:scale-95 transition-all focus:outline-none"
+            />
 
-              {/* Floating Vertical 5-Card Stack */}
-              <div className="flex flex-col gap-2.5 w-full sm:w-56">
-                {heroFeatures.map((feat) => {
-                  const Icon = feat.icon;
-                  return (
-                    <div
-                      key={feat.label}
-                      className="bg-white rounded-xl py-2.5 px-3.5 shadow-md border border-slate-100 flex items-center gap-3 hover:translate-x-1 transition-transform"
-                    >
-                      <div className="w-7 h-7 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
-                        <Icon className={`w-4 h-4 ${feat.color}`} />
-                      </div>
-                      <span className="text-xs font-bold text-slate-800 leading-snug">
-                        {feat.label}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
+            {/* Interactive Hotspot: "Get TallyPrime Demo" (Green Button) */}
+            <button
+              onClick={onOpenDemoModal}
+              aria-label="Get TallyPrime Demo"
+              title="Get TallyPrime Demo"
+              className="absolute left-[3.8%] top-[66.5%] w-[19.2%] h-[13.5%] rounded-full cursor-pointer hover:ring-4 hover:ring-emerald-400/80 hover:bg-emerald-400/20 active:scale-95 transition-all duration-200 focus:outline-none shadow-lg group/btn"
+            >
+              {/* Pulsing Beacon Dot on button corner */}
+              <span className="absolute -top-1 -right-1 flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 border border-white"></span>
+              </span>
+            </button>
 
-            </div>
+            {/* Interactive Hotspot: "Talk to an Expert" (Outline Button) */}
+            <button
+              onClick={onOpenConsultModal}
+              aria-label="Talk to an Expert"
+              title="Talk to an Expert"
+              className="absolute left-[23.8%] top-[66.5%] w-[15.2%] h-[13.5%] rounded-full cursor-pointer hover:ring-4 hover:ring-cyan-300/80 hover:bg-cyan-400/20 active:scale-95 transition-all duration-200 focus:outline-none"
+            />
+
+            {/* Interactive Feature Pills Hotspots (Right Stack) */}
+            {/* Pill 1: Accounting & Finance -> TallyPrime */}
+            <button
+              onClick={() => {
+                setSelectedCard('tallyprime');
+                document.getElementById('product-card-tallyprime')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }}
+              aria-label="Accounting & Finance"
+              title="View TallyPrime Accounting & Finance"
+              className="absolute left-[78.2%] top-[14%] w-[19.6%] h-[12%] rounded-xl cursor-pointer hover:ring-2 hover:ring-sky-400 hover:shadow-lg hover:shadow-sky-500/30 hover:scale-[1.02] active:scale-95 transition-all duration-200 focus:outline-none bg-transparent hover:bg-sky-500/10"
+            />
+
+            {/* Pill 2: Inventory & Operations -> TallyPrime */}
+            <button
+              onClick={() => {
+                setSelectedCard('tallyprime');
+                document.getElementById('product-card-tallyprime')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }}
+              aria-label="Inventory & Operations"
+              title="View Inventory & Operations"
+              className="absolute left-[78.2%] top-[27.3%] w-[19.6%] h-[12%] rounded-xl cursor-pointer hover:ring-2 hover:ring-blue-400 hover:shadow-lg hover:shadow-blue-500/30 hover:scale-[1.02] active:scale-95 transition-all duration-200 focus:outline-none bg-transparent hover:bg-blue-500/10"
+            />
+
+            {/* Pill 3: GST & Compliance -> Edit Log */}
+            <button
+              onClick={() => {
+                setSelectedCard('editlog');
+                document.getElementById('product-card-editlog')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }}
+              aria-label="GST & Compliance"
+              title="View TallyPrime Edit Log (GST & Compliance)"
+              className="absolute left-[78.2%] top-[40.6%] w-[19.6%] h-[12%] rounded-xl cursor-pointer hover:ring-2 hover:ring-indigo-400 hover:shadow-lg hover:shadow-indigo-500/30 hover:scale-[1.02] active:scale-95 transition-all duration-200 focus:outline-none bg-transparent hover:bg-indigo-500/10"
+            />
+
+            {/* Pill 4: Reporting & Insights -> Server */}
+            <button
+              onClick={() => {
+                setSelectedCard('server');
+                document.getElementById('product-card-server')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }}
+              aria-label="Reporting & Insights"
+              title="View TallyPrime Server (High-Speed Reporting)"
+              className="absolute left-[78.2%] top-[54%] w-[19.6%] h-[12%] rounded-xl cursor-pointer hover:ring-2 hover:ring-cyan-400 hover:shadow-lg hover:shadow-cyan-500/30 hover:scale-[1.02] active:scale-95 transition-all duration-200 focus:outline-none bg-transparent hover:bg-cyan-500/10"
+            />
+
+            {/* Pill 5: Business Growth -> Add-ons */}
+            <button
+              onClick={() => {
+                setSelectedCard('addons');
+                document.getElementById('product-card-addons')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }}
+              aria-label="Business Growth"
+              title="View Tally Add-ons & Custom Solutions"
+              className="absolute left-[78.2%] top-[67.3%] w-[19.6%] h-[12%] rounded-xl cursor-pointer hover:ring-2 hover:ring-emerald-400 hover:shadow-lg hover:shadow-emerald-500/30 hover:scale-[1.02] active:scale-95 transition-all duration-200 focus:outline-none bg-transparent hover:bg-emerald-500/10"
+            />
 
           </div>
+
+          {/* Mobile Action Bar (Optimized for Small Screens <640px) */}
+          <div className="sm:hidden mt-3 px-2 flex flex-col gap-2.5">
+            <div className="grid grid-cols-2 gap-2">
+              <button
+                onClick={onOpenDemoModal}
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl bg-[#16A34A] text-white font-bold text-xs shadow-md active:scale-95 transition-all"
+              >
+                <span>Get Demo</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+              <button
+                onClick={onOpenConsultModal}
+                className="inline-flex items-center justify-center px-4 py-3 rounded-xl border border-sky-400/40 bg-white/10 text-white font-semibold text-xs active:scale-95 transition-all"
+              >
+                Talk to Expert
+              </button>
+            </div>
+
+            {/* Mobile Feature Badges Scroll */}
+            <div className="flex items-center gap-2 overflow-x-auto py-1 no-scrollbar text-xs">
+              {heroFeatures.map((feat) => {
+                const Icon = feat.icon;
+                return (
+                  <div
+                    key={feat.label}
+                    className="flex-shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white/10 border border-white/15 text-slate-200 text-[11px] font-medium"
+                  >
+                    <Icon className="w-3 h-3 text-sky-400" />
+                    <span>{feat.label}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
         </div>
       </section>
 

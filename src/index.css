@@ -71,3 +71,33 @@
 .hero-curve-mask {
   border-radius: 40% 60% 60% 40% / 50% 50% 50% 50%;
 }
+
+/* Banner animations */
+@keyframes banner-shimmer {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  35%, 100% {
+    transform: translateX(350%) skewX(-20deg);
+  }
+}
+
+.animate-banner-shimmer {
+  animation: banner-shimmer 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes banner-glow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.12);
+  }
+}
+
+.animate-banner-glow {
+  animation: banner-glow 6s ease-in-out infinite;
+}
+
