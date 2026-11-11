@@ -1,5 +1,5 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // Exact logos matching the reference design
 function TallyPrimeLogo() {
@@ -96,6 +96,51 @@ export default function Products({ onNavigateProducts, onOpenDemoModal, onOpenCo
     },
   ];
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const touchStartXRef = useRef(null);
+  const touchEndXRef = useRef(null);
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev === 0 ? products.length - 1 : prev - 1));
+  };
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev === products.length - 1 ? 0 : prev + 1));
+  };
+
+  // Subtle auto-advance every 5 seconds (paused when touched or hovered)
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [isPaused, currentIndex]);
+
+  const handleTouchStart = (e) => {
+    setIsPaused(true);
+    touchStartXRef.current = e.targetTouches[0].clientX;
+    touchEndXRef.current = null;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndXRef.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    setIsPaused(false);
+    if (!touchStartXRef.current || !touchEndXRef.current) return;
+    const distance = touchStartXRef.current - touchEndXRef.current;
+    if (distance > 40) {
+      nextSlide();
+    } else if (distance < -40) {
+      prevSlide();
+    }
+    touchStartXRef.current = null;
+    touchEndXRef.current = null;
+  };
+
   return (
     <section id="products" className="py-12 lg:py-14 bg-white border-b border-slate-200/80 w-full">
       <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12">
@@ -116,8 +161,100 @@ export default function Products({ onNavigateProducts, onOpenDemoModal, onOpenCo
           </button>
         </div>
 
-        {/* 5-Column Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4">
+        {/* 1. Mobile & Tablet Single-Slide Slider (< lg) */}
+        <div 
+          className="block lg:hidden"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          {/* Slider track container */}
+          <div 
+            className="relative overflow-hidden rounded-2xl touch-pan-y"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            <div 
+              className="flex transition-transform duration-300 ease-out"
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              {products.map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <div key={index} className="w-full shrink-0 px-0.5">
+                    <div
+                      onClick={item.action}
+                      className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between min-h-[175px] group cursor-pointer active:scale-[0.99]"
+                    >
+                      <div>
+                        <div className="flex items-center gap-3 mb-2.5">
+                          <div className="shrink-0 flex items-center justify-center">
+                            <Icon />
+                          </div>
+                          <h3 className="text-[16px] font-bold text-[#0B1528] tracking-tight leading-snug group-hover:text-[#0052CC] transition-colors">
+                            {item.title}
+                          </h3>
+                        </div>
+
+                        <p className="text-[13px] text-slate-500 leading-relaxed font-normal">
+                          {item.desc}
+                        </p>
+                      </div>
+
+                      <div className="pt-4 flex items-center justify-between border-t border-slate-100 mt-2">
+                        <span className="text-xs sm:text-[13px] font-bold text-[#0052CC] group-hover:text-[#003D99] inline-flex items-center gap-1 transition-colors">
+                          <span>{item.linkText}</span>
+                          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                        </span>
+                        <span className="text-[11px] font-semibold text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full">
+                          {index + 1} / {products.length}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Slider Controls: Arrows + Dots */}
+          <div className="flex items-center justify-between pt-4 px-1">
+            {/* Prev Button */}
+            <button
+              onClick={prevSlide}
+              aria-label="Previous product"
+              className="w-9 h-9 rounded-full bg-white border border-slate-200/90 shadow-xs flex items-center justify-center text-slate-600 hover:text-[#0052CC] hover:border-[#0052CC] active:scale-95 transition-all cursor-pointer"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+
+            {/* Dots Indicator */}
+            <div className="flex items-center gap-1.5">
+              {products.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  aria-label={`Go to product ${index + 1}`}
+                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                    currentIndex === index ? 'w-6 bg-[#0052CC]' : 'w-2 bg-slate-300 hover:bg-slate-400'
+                  }`}
+                />
+              ))}
+            </div>
+
+            {/* Next Button */}
+            <button
+              onClick={nextSlide}
+              aria-label="Next product"
+              className="w-9 h-9 rounded-full bg-white border border-slate-200/90 shadow-xs flex items-center justify-center text-slate-600 hover:text-[#0052CC] hover:border-[#0052CC] active:scale-95 transition-all cursor-pointer"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
+        {/* 2. Desktop 5-Column Grid (>= lg) */}
+        <div className="hidden lg:grid lg:grid-cols-5 gap-3.5 sm:gap-4">
           {products.map((item, index) => {
             const Icon = item.icon;
             return (
